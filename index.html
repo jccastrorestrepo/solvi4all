@@ -8,6 +8,87 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 
+<script>
+const productos = [
+  {
+    nombre: "BLUETTI EB3A",
+    descripcion: "Power station compacta de 268 Wh y 600 W. Ideal para cargas pequeñas y respaldo básico.",
+    capacidad: "268 Wh",
+    potencia: "600 W",
+    precio: "Consultar precio",
+    enlace: "#"
+  },
+  {
+    nombre: "EcoFlow RIVER 2",
+    descripcion: "Una opción compacta y económica para dispositivos pequeños, trabajo y emergencias.",
+    capacidad: "256 Wh",
+    potencia: "300 W",
+    precio: "Consultar precio",
+    enlace: "#"
+  },
+  {
+    nombre: "ALLPOWERS R600",
+    descripcion: "Power station portátil de mayor potencia para quienes necesitan más capacidad y versatilidad.",
+    capacidad: "299 Wh",
+    potencia: "600 W",
+    precio: "Consultar precio",
+    enlace: "#"
+  }
+];
+
+const boton = document.querySelector(".box button");
+
+if (boton) {
+  boton.addEventListener("click", function () {
+
+    const existente = document.querySelector("#resultados-productos");
+    if (existente) existente.remove();
+
+    const contenedor = document.createElement("section");
+    contenedor.id = "resultados-productos";
+
+    contenedor.innerHTML = `
+      <div style="max-width:1100px;margin:0 auto;">
+        <small>TUS OPCIONES</small>
+
+        <h2 style="margin-top:12px;">
+          Estas opciones encajan con lo que necesitas.
+        </h2>
+
+        <div class="cards">
+          ${productos.map((p, index) => `
+            <article>
+              <small>RECOMENDACIÓN ${index + 1}</small>
+
+              <h3>${p.nombre}</h3>
+
+              <p>${p.descripcion}</p>
+
+              <p>
+                <strong>${p.capacidad}</strong> ·
+                <strong>${p.potencia}</strong>
+              </p>
+
+              <p><strong>${p.precio}</strong></p>
+
+              <a href="${p.enlace}" target="_blank" class="button">
+                Ver producto →
+              </a>
+            </article>
+          `).join("")}
+        </div>
+      </div>
+    `;
+
+    document.querySelector("#diagnostico")
+      .insertAdjacentElement("afterend", contenedor);
+
+    contenedor.scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+}
+</script>
 <body>
 
 <header>
