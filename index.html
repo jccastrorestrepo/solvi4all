@@ -9,85 +9,76 @@
 </head>
 
 <script>
-const productos = [
-  {
-    nombre: "BLUETTI EB3A",
-    descripcion: "Power station compacta de 268 Wh y 600 W. Ideal para cargas pequeñas y respaldo básico.",
-    capacidad: "268 Wh",
-    potencia: "600 W",
-    precio: "Consultar precio",
-    enlace: "#"
-  },
-  {
-    nombre: "EcoFlow RIVER 2",
-    descripcion: "Una opción compacta y económica para dispositivos pequeños, trabajo y emergencias.",
-    capacidad: "256 Wh",
-    potencia: "300 W",
-    precio: "Consultar precio",
-    enlace: "#"
-  },
-  {
-    nombre: "ALLPOWERS R600",
-    descripcion: "Power station portátil de mayor potencia para quienes necesitan más capacidad y versatilidad.",
-    capacidad: "299 Wh",
-    potencia: "600 W",
-    precio: "Consultar precio",
-    enlace: "#"
-  }
-];
+document.addEventListener("click", function(e) {
 
-const boton = document.querySelector(".box button");
+  const boton = e.target.closest("a");
 
-if (boton) {
-  boton.addEventListener("click", function () {
+  if (!boton) return;
 
-    const existente = document.querySelector("#resultados-productos");
-    if (existente) existente.remove();
+  if (boton.textContent.includes("Ver opciones recomendadas")) {
 
-    const contenedor = document.createElement("section");
-    contenedor.id = "resultados-productos";
+    e.preventDefault();
 
-    contenedor.innerHTML = `
-      <div style="max-width:1100px;margin:0 auto;">
-        <small>TUS OPCIONES</small>
+    const productos = [
+      {
+        nombre: "BLUETTI EB3A",
+        texto: "268 Wh · 600 W · Compacta y económica",
+        enlace: "#"
+      },
+      {
+        nombre: "EcoFlow RIVER 2",
+        texto: "256 Wh · 300 W · Excelente para uso básico",
+        enlace: "#"
+      },
+      {
+        nombre: "ALLPOWERS R600",
+        texto: "299 Wh · 600 W · Mayor potencia y versatilidad",
+        enlace: "#"
+      }
+    ];
 
-        <h2 style="margin-top:12px;">
-          Estas opciones encajan con lo que necesitas.
-        </h2>
+    let resultados = document.getElementById("productos-recomendados");
 
-        <div class="cards">
-          ${productos.map((p, index) => `
-            <article>
-              <small>RECOMENDACIÓN ${index + 1}</small>
+    if (!resultados) {
 
-              <h3>${p.nombre}</h3>
+      resultados = document.createElement("section");
+      resultados.id = "productos-recomendados";
 
-              <p>${p.descripcion}</p>
+      resultados.innerHTML = `
+        <div style="max-width:1100px;margin:auto;">
+          
+          <small>PRODUCTOS RECOMENDADOS</small>
 
-              <p>
-                <strong>${p.capacidad}</strong> ·
-                <strong>${p.potencia}</strong>
-              </p>
+          <h2>Estas opciones pueden ser para ti.</h2>
 
-              <p><strong>${p.precio}</strong></p>
+          <div class="cards">
+            ${productos.map(p => `
+              <article>
+                <h3>${p.nombre}</h3>
 
-              <a href="${p.enlace}" target="_blank" class="button">
-                Ver producto →
-              </a>
-            </article>
-          `).join("")}
+                <p>${p.texto}</p>
+
+                <a
+                  href="${p.enlace}"
+                  target="_blank"
+                  class="button">
+                  Ver producto →
+                </a>
+              </article>
+            `).join("")}
+          </div>
+
         </div>
-      </div>
-    `;
+      `;
 
-    document.querySelector("#diagnostico")
-      .insertAdjacentElement("afterend", contenedor);
+      document.querySelector("main").appendChild(resultados);
+    }
 
-    contenedor.scrollIntoView({
+    resultados.scrollIntoView({
       behavior: "smooth"
     });
-  });
-}
+  }
+});
 </script>
 <body>
 
