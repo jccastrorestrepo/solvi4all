@@ -5,81 +5,77 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="SOLVI4ALL: encuentra la solución correcta. Guías, comparativas y recomendaciones transparentes.">
 <title>SOLVI4ALL — Soluciones para todos</title>
-<link rel="stylesheet" href="styles.css">
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Arial,sans-serif;color:#101828;background:#f7f8fa;line-height:1.55}
+header{height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 7vw;border-bottom:1px solid #e5e7eb;background:#fff;position:sticky;top:0;z-index:5}
+.logo{font-weight:900;color:#101828;text-decoration:none}
+.logo b{display:inline-grid;place-items:center;background:#0b1220;color:#fff;border-radius:9px;width:34px;height:34px;margin-right:8px;font-size:12px}
+.logo,nav{display:flex;align-items:center;gap:24px}
+nav a{color:#667085;text-decoration:none;font-size:14px}
+.cta,.button{background:#0b1220;color:#fff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:800;font-size:14px}
+.hero{min-height:calc(100vh - 74px);padding:90px 8vw;display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:center;background:linear-gradient(135deg,#f7f8fa,#eaf0ff)}
+small{font-size:11px;letter-spacing:.16em;font-weight:900;color:#687385}
+.hero h1{font-size:clamp(44px,6vw,76px);line-height:1.02;letter-spacing:-.055em;margin:20px 0}
+.hero h1 span{color:#2459d6}
+.hero p{font-size:20px;color:#5f6b7c;max-width:700px}
+.actions{display:flex;gap:12px;margin:30px 0 18px;flex-wrap:wrap}
+.ghost{padding:12px 18px;border:1px solid #cfd5df;border-radius:10px;color:#101828;text-decoration:none;font-weight:800;font-size:14px;background:#fff}
+.hero em{font-size:13px;color:#7b8594;font-style:normal}
+.hero aside{background:#0b1220;color:#fff;padding:38px;border-radius:26px;box-shadow:0 25px 60px #0b122033}
+.hero aside small{color:#9eabc0}
+.hero aside strong{display:block;font-size:44px;line-height:1.05;letter-spacing:-.04em;margin:20px 0}
+.hero aside p{font-size:15px;color:#aeb9c9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.grid i{font-style:normal;background:#ffffff0d;padding:15px;border-radius:12px}
+.grid label{display:block;color:#d8deea;font-size:12px;margin-top:5px}
+section{padding:100px 8vw}
+section>h2{font-size:clamp(34px,4vw,52px);line-height:1.06;letter-spacing:-.045em;max-width:800px;margin:16px 0 42px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cards article{background:#fff;border:1px solid #e4e7ec;border-radius:20px;padding:28px;min-height:285px}
+.cards b{font-size:28px}
+.cards h3{font-size:22px;margin:20px 0 8px}
+.cards p,.guides p{color:#697386;font-size:15px}
+.cards a{color:#2459d6;text-decoration:none;font-weight:800;font-size:14px}
+.dark{background:#0b1220;color:#fff}
+.dark small{color:#9eabc0}
+.guides{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.guides article{border:1px solid #ffffff18;background:#ffffff08;border-radius:20px;padding:30px;min-height:230px}
+.guides span{color:#7f8da2;font-weight:900}
+.guides h3{font-size:23px;line-height:1.1;margin-top:35px}
+.guides p{color:#aeb9c9}
+.diagnostic{margin:0 8vw 90px;padding:55px;background:#eaf0ff;border:1px solid #cfdbfa;border-radius:26px;display:grid;grid-template-columns:1fr 1fr;gap:45px}
+.diagnostic{padding-left:5vw;padding-right:5vw}
+.diagnostic p{color:#5f6b7c}
+.box{background:#fff;border-radius:18px;padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.box label{font-weight:750;font-size:14px}
+.box select{width:100%;border:1px solid #e4e7ec;border-radius:10px;padding:12px;background:#fff;color:#101828}
+.box button{grid-column:1/-1;border:0;border-radius:10px;padding:14px;background:#2459d6;color:#fff;font-weight:900;cursor:pointer}
+.recommendation{grid-column:1/-1;margin-top:18px;background:#fff;border:1px solid #e4e7ec;border-radius:18px;padding:26px}
+.recommendation small{color:#2459d6}
+.recommendation h3{font-size:30px;margin:10px 0}
+.recommendation p{font-size:15px;color:#697386}
+.recommendation .button{display:inline-block;margin-top:8px;background:#2459d6}
+.recommendation .why{background:#f7f9fc;border-radius:12px;padding:16px;margin:18px 0}
+.recommendation .why strong{color:#101828}
+.recommendation .alternatives{margin-top:24px;padding-top:20px;border-top:1px solid #e4e7ec}
+.recommendation .alternative{padding:12px 0;border-bottom:1px solid #eef0f4}
+.recommendation .alternative:last-child{border-bottom:0}
+.recommendation .alternative strong{display:block}
+.recommendation .alternative span{font-size:13px;color:#697386}
+.trust{border-top:1px solid #e4e7ec;background:#fff}
+.trust h2{font-size:28px;margin:0 0 12px}
+.trust p{max-width:900px;color:#697386}
+footer{background:#0b1220;color:#aeb9c9;padding:35px 8vw;display:flex;gap:30px;align-items:center;flex-wrap:wrap}
+footer b{color:#fff}
+footer small{width:100%;color:#68768a;border-top:1px solid #ffffff12;padding-top:20px}
+@media(max-width:900px){nav{display:none}.hero,.diagnostic{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.guides{grid-template-columns:1fr}}
+@media(max-width:600px){.hero,section{padding:65px 20px}.cards,.guides{grid-template-columns:1fr}.hero h1{font-size:48px}.diagnostic{margin:0 20px 60px;padding:28px}.box{grid-template-columns:1fr}.cta{display:none}}
+</style>
 </head>
 
-<script>
-document.addEventListener("click", function(e) {
-
-  const boton = e.target.closest("a");
-
-  if (!boton) return;
-
-  if (boton.textContent.includes("Ver opciones recomendadas")) {
-
-    e.preventDefault();
-
-    const productos = [
-      {
-        nombre: "BLUETTI EB3A",
-        texto: "268 Wh · 600 W · Compacta y económica",
-        enlace: "#"
-      },
-      {
-        nombre: "EcoFlow RIVER 2",
-        texto: "256 Wh · 300 W · Excelente para uso básico",
-        enlace: "#"
-      },
-      {
-        nombre: "ALLPOWERS R600",
-        texto: "299 Wh · 600 W · Mayor potencia y versatilidad",
-        enlace: "#"
-      }
-    ];
-
-    let resultados = document.getElementById("productos-recomendados");
-
-    if (!resultados) {
-
-      resultados = document.createElement("section");
-      resultados.id = "productos-recomendados";
-
-      resultados.innerHTML = `
-        <div style="max-width:1100px;margin:auto;">
-          
-          <small>PRODUCTOS RECOMENDADOS</small>
-
-          <h2>Estas opciones pueden ser para ti.</h2>
-
-          <div class="cards">
-            ${productos.map(p => `
-              <article>
-                <h3>${p.nombre}</h3>
-
-                <p>${p.texto}</p>
-
-                <a
-                  href="${p.enlace}"
-                  target="_blank"
-                  class="button">
-                  Ver producto →
-                </a>
-              </article>
-            `).join("")}
-          </div>
-
-        </div>
-      `;
-
-      document.querySelector("main").appendChild(resultados);
-    }
-
-    resultados.scrollIntoView({
-      behavior: "smooth"
-    });
-  }
-});
-</script>
 <body>
 
 <header>
@@ -243,7 +239,7 @@ document.addEventListener("click", function(e) {
 
   <div class="box">
 
-    <label>¿Qué quieres alimentar?</label>
+    <label for="uso">¿Qué quieres alimentar?</label>
 
     <select id="uso">
       <option value="">Selecciona</option>
@@ -253,7 +249,7 @@ document.addEventListener("click", function(e) {
       <option value="emergencia">Emergencia / apagones</option>
     </select>
 
-    <label>Potencia aproximada</label>
+    <label for="potencia">Potencia aproximada</label>
 
     <select id="potencia">
       <option value="">Selecciona</option>
@@ -263,7 +259,7 @@ document.addEventListener("click", function(e) {
       <option value="muyalta">Más de 2000 W</option>
     </select>
 
-    <label>Autonomía</label>
+    <label for="autonomia">Autonomía</label>
 
     <select id="autonomia">
       <option value="">Selecciona</option>
@@ -273,7 +269,7 @@ document.addEventListener("click", function(e) {
       <option value="muylarga">Más de 24 horas</option>
     </select>
 
-    <label>Presupuesto</label>
+    <label for="presupuesto">Presupuesto</label>
 
     <select id="presupuesto">
       <option value="">Selecciona</option>
@@ -283,7 +279,7 @@ document.addEventListener("click", function(e) {
       <option value="premium">Más de US$2.000</option>
     </select>
 
-    <button onclick="recomendar()">Encontrar mi solución</button>
+    <button type="button" onclick="recomendar()">Encontrar mi solución</button>
 
     <div id="resultado"></div>
 
@@ -319,161 +315,554 @@ document.addEventListener("click", function(e) {
 
 
 <script>
-
-function recomendar() {
-
-    const uso = document.getElementById("uso").value;
-    const potencia = document.getElementById("potencia").value;
-    const autonomia = document.getElementById("autonomia").value;
-    const presupuesto = document.getElementById("presupuesto").value;
-
-    const resultado = document.getElementById("resultado");
-
-    if (!uso || !potencia || !autonomia || !presupuesto) {
-        resultado.innerHTML = `
-            <div class="recommendation">
-                <strong>Completa las cuatro preguntas para darte una recomendación.</strong>
-            </div>
-        `;
-        return;
-    }
-
-    /*
-     * PRODUCTOS
-     * Por ahora utilizamos tres modelos reales.
-     * Después agregaremos muchos más y sus enlaces de afiliado.
-     */
-
-    const productos = [
-        {
-            nombre: "BLUETTI EB3A",
-            capacidad: 268,
-            potencia: 600,
-            nivel: "bajo",
-            descripcion: "Compacta, económica y muy buena para dispositivos pequeños.",
-            enlace: "https://www.amazon.com/s?k=Bluetti+EB3A"
-        },
-        {
-            nombre: "EcoFlow RIVER 2",
-            capacidad: 256,
-            potencia: 300,
-            nivel: "medio",
-            descripcion: "Excelente opción para uso básico y equipos pequeños.",
-            enlace: "https://www.amazon.com/s?k=EcoFlow+RIVER+2"
-        },
-        {
-            nombre: "ALLPOWERS R600",
-            capacidad: 299,
-            potencia: 600,
-            nivel: "medio",
-            descripcion: "Mayor potencia y versatilidad para diferentes usos.",
-            enlace: "https://www.amazon.com/s?k=ALLPOWERS+R600"
-        }
-    ];
+/*
+ * ============================================================
+ * SOLVI4ALL — MOTOR DE RECOMENDACIÓN
+ * ============================================================
+ *
+ * Esta versión conserva la página actual y mejora únicamente
+ * la lógica del recomendador.
+ *
+ * Antes:
+ *   presupuesto -> potencia -> autonomía -> uso
+ *
+ * Ahora:
+ *   se evalúan LAS CUATRO respuestas simultáneamente.
+ *
+ * Esto evita que una sola respuesta domine toda la decisión.
+ */
 
 
-    /*
-     * REGLAS DE RECOMENDACIÓN
-     */
+/*
+ * PRODUCTOS
+ *
+ * Por ahora mantenemos exactamente los tres productos que
+ * ya estaban definidos en el proyecto.
+ *
+ * Cuando consigamos enlaces de afiliado reales, solo habrá
+ * que reemplazar "enlace".
+ */
 
-    let productoPrincipal = productos[0];
+const productos = [
 
-    // Presupuesto bajo
-    if (presupuesto === "bajo") {
+  {
+    nombre: "BLUETTI EB3A",
+    capacidad: 268,
+    potencia: 600,
+    nivel: "bajo",
+    descripcion:
+      "Compacta, económica y muy buena para dispositivos pequeños.",
+    enlace:
+      "https://www.amazon.com/s?k=Bluetti+EB3A"
+  },
 
-        productoPrincipal = productos[0];
+  {
+    nombre: "EcoFlow RIVER 2",
+    capacidad: 256,
+    potencia: 300,
+    nivel: "medio",
+    descripcion:
+      "Excelente opción para uso básico y equipos pequeños.",
+    enlace:
+      "https://www.amazon.com/s?k=EcoFlow+RIVER+2"
+  },
 
-    }
+  {
+    nombre: "ALLPOWERS R600",
+    capacidad: 299,
+    potencia: 600,
+    nivel: "medio",
+    descripcion:
+      "Mayor potencia y versatilidad para diferentes usos.",
+    enlace:
+      "https://www.amazon.com/s?k=ALLPOWERS+R600"
+  }
 
-    // Necesidad de mayor potencia
-    else if (
-        potencia === "muyalta" ||
-        potencia === "alta"
-    ) {
-
-        productoPrincipal = productos[2];
-
-    }
-
-    // Mayor autonomía
-    else if (
-        autonomia === "muylarga" ||
-        autonomia === "larga"
-    ) {
-
-        productoPrincipal = productos[2];
-
-    }
-
-    // Uso básico
-    else {
-
-        productoPrincipal = productos[1];
-
-    }
+];
 
 
-    /*
-     * EXPLICACIÓN PERSONALIZADA
-     */
+/*
+ * VALORES DE REFERENCIA
+ *
+ * No estamos afirmando que un equipo pueda alimentar
+ * cualquier electrodoméstico. Estos valores solamente sirven
+ * para ordenar las opciones del recomendador.
+ */
 
-    let explicacion = "";
+const necesidadesPotencia = {
+  baja: 300,
+  media: 600,
+  alta: 1000,
+  muyalta: 2000
+};
 
-    if (productoPrincipal.nombre === "BLUETTI EB3A") {
+const necesidadesAutonomia = {
+  corta: 268,
+  media: 268,
+  larga: 500,
+  muylarga: 1000
+};
 
-        explicacion =
-            "Por tu presupuesto, conviene priorizar una solución compacta y económica que entregue suficiente potencia para tus necesidades.";
 
-    } else if (productoPrincipal.nombre === "EcoFlow RIVER 2") {
+/*
+ * PUNTUACIÓN
+ *
+ * Cada producto recibe puntos por:
+ *
+ * 1. Potencia
+ * 2. Capacidad
+ * 3. Presupuesto
+ * 4. Uso
+ *
+ * Una falta grave de potencia/capacidad recibe penalización.
+ */
 
-        explicacion =
-            "Por tus necesidades, la RIVER 2 ofrece un buen equilibrio entre capacidad, potencia, tamaño y facilidad de uso.";
+function evaluarProducto(producto, respuestas) {
+
+  let puntos = 0;
+  let razones = [];
+
+  const potenciaNecesaria =
+    necesidadesPotencia[respuestas.potencia];
+
+  const capacidadNecesaria =
+    necesidadesAutonomia[respuestas.autonomia];
+
+
+  /*
+   * 1. POTENCIA
+   */
+
+  if (producto.potencia >= potenciaNecesaria) {
+
+    puntos += 35;
+
+    if (producto.potencia === potenciaNecesaria) {
+
+      razones.push(
+        "su potencia está bien ajustada a tu necesidad"
+      );
 
     } else {
 
-        explicacion =
-            "Tus necesidades apuntan hacia una solución con mayor potencia y versatilidad, por lo que esta opción resulta más adecuada.";
+      razones.push(
+        "ofrece margen adicional de potencia"
+      );
 
     }
 
+  } else {
 
     /*
-     * MOSTRAR RECOMENDACIÓN
+     * Si el producto no alcanza la potencia pedida,
+     * lo penalizamos bastante.
      */
 
+    puntos -= 45;
+
+    razones.push(
+      "su potencia puede quedarse corta"
+    );
+
+  }
+
+
+  /*
+   * 2. CAPACIDAD / AUTONOMÍA
+   */
+
+  if (producto.capacidad >= capacidadNecesaria) {
+
+    puntos += 30;
+
+    razones.push(
+      "su capacidad ofrece un margen razonable de autonomía"
+    );
+
+  } else {
+
+    puntos -= 30;
+
+    razones.push(
+      "su capacidad puede limitar la autonomía"
+    );
+
+  }
+
+
+  /*
+   * 3. PRESUPUESTO
+   *
+   * bajo  -> prioriza EB3A
+   * medio -> prioriza equilibrio
+   * alto  -> acepta R600
+   * premium -> prioriza prestaciones disponibles
+   */
+
+  if (respuestas.presupuesto === "bajo") {
+
+    if (producto.nivel === "bajo") {
+      puntos += 30;
+    } else {
+      puntos -= 5;
+    }
+
+  }
+
+  else if (respuestas.presupuesto === "medio") {
+
+    if (producto.nivel === "medio") {
+      puntos += 25;
+    } else {
+      puntos += 12;
+    }
+
+  }
+
+  else if (respuestas.presupuesto === "alto") {
+
+    if (producto.nivel === "medio") {
+      puntos += 25;
+    } else {
+      puntos += 15;
+    }
+
+  }
+
+  else if (respuestas.presupuesto === "premium") {
+
+    /*
+     * Con los tres productos actuales no existe una opción
+     * premium real, por lo que premiamos prestaciones.
+     */
+
+    puntos += producto.potencia / 100;
+    puntos += producto.capacidad / 100;
+
+  }
+
+
+  /*
+   * 4. USO
+   */
+
+  if (respuestas.uso === "camping") {
+
+    if (producto.capacidad <= 300) {
+      puntos += 10;
+      razones.push("es una alternativa compacta para viajes");
+    }
+
+  }
+
+  if (respuestas.uso === "negocio") {
+
+    if (producto.potencia >= 600) {
+      puntos += 10;
+      razones.push("ofrece mayor margen para equipos de trabajo");
+    }
+
+  }
+
+  if (respuestas.uso === "emergencia") {
+
+    if (producto.capacidad >= 268) {
+      puntos += 10;
+      razones.push("encaja mejor con una necesidad de respaldo");
+    }
+
+  }
+
+  if (respuestas.uso === "hogar") {
+
+    if (producto.potencia >= 600) {
+      puntos += 8;
+      razones.push("tiene mayor margen para usos domésticos");
+    }
+
+  }
+
+
+  return {
+    producto,
+    puntos,
+    razones
+  };
+
+}
+
+
+/*
+ * EXPLICACIÓN
+ */
+
+function crearExplicacion(producto, respuestas, razones) {
+
+  let texto = "";
+
+  if (respuestas.presupuesto === "bajo") {
+
+    texto +=
+      "Priorizamos mantener el presupuesto bajo control. ";
+
+  }
+
+  else if (respuestas.presupuesto === "medio") {
+
+    texto +=
+      "Buscamos principalmente un equilibrio entre precio y prestaciones. ";
+
+  }
+
+  else {
+
+    texto +=
+      "Podemos darle más importancia a las prestaciones y al margen de capacidad. ";
+
+  }
+
+
+  if (
+    respuestas.potencia === "alta" ||
+    respuestas.potencia === "muyalta"
+  ) {
+
+    texto +=
+      "Tu necesidad de potencia hace especialmente importante contar con suficiente margen. ";
+
+  }
+
+  else {
+
+    texto +=
+      "Tu necesidad de potencia permite considerar soluciones compactas. ";
+
+  }
+
+
+  if (
+    respuestas.autonomia === "larga" ||
+    respuestas.autonomia === "muylarga"
+  ) {
+
+    texto +=
+      "También estás buscando una autonomía importante, por lo que la capacidad tiene bastante peso.";
+
+  }
+
+  else {
+
+    texto +=
+      "Como tu autonomía requerida es moderada, no es necesario sobredimensionar la capacidad.";
+
+  }
+
+
+  return texto;
+
+}
+
+
+/*
+ * RECOMENDAR
+ */
+
+function recomendar() {
+
+  const uso =
+    document.getElementById("uso").value;
+
+  const potencia =
+    document.getElementById("potencia").value;
+
+  const autonomia =
+    document.getElementById("autonomia").value;
+
+  const presupuesto =
+    document.getElementById("presupuesto").value;
+
+  const resultado =
+    document.getElementById("resultado");
+
+
+  /*
+   * VALIDACIÓN
+   */
+
+  if (
+    !uso ||
+    !potencia ||
+    !autonomia ||
+    !presupuesto
+  ) {
+
     resultado.innerHTML = `
+      <div class="recommendation">
 
-        <div class="recommendation">
+        <strong>
+          Completa las cuatro preguntas para darte
+          una recomendación.
+        </strong>
 
-            <small>TU RECOMENDACIÓN INICIAL</small>
+      </div>
+    `;
 
-            <h3>${productoPrincipal.nombre}</h3>
+    resultado.style.display = "block";
 
-            <p>
-                ${productoPrincipal.capacidad} Wh ·
-                ${productoPrincipal.potencia} W
-            </p>
+    return;
+  }
 
-            <p>
-                ${explicacion}
-            </p>
 
-            <p>
-                ${productoPrincipal.descripcion}
-            </p>
+  const respuestas = {
+    uso,
+    potencia,
+    autonomia,
+    presupuesto
+  };
 
-            <a
-                class="button"
-                href="${productoPrincipal.enlace}"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Ver producto →
-            </a>
+
+  /*
+   * EVALUAMOS TODOS LOS PRODUCTOS
+   */
+
+  const evaluados =
+    productos
+      .map(producto =>
+        evaluarProducto(producto, respuestas)
+      )
+      .sort(
+        (a,b) => b.puntos - a.puntos
+      );
+
+
+  /*
+   * GANADOR
+   */
+
+  const ganador =
+    evaluados[0];
+
+
+  const producto =
+    ganador.producto;
+
+
+  /*
+   * OTRAS OPCIONES
+   */
+
+  const otrasOpciones =
+    evaluados
+      .slice(1)
+      .map(item => `
+
+        <div class="alternative">
+
+          <strong>
+            ${item.producto.nombre}
+          </strong>
+
+          <span>
+            ${item.producto.capacidad} Wh ·
+            ${item.producto.potencia} W
+            · Puntuación ${Math.round(item.puntos)}
+          </span>
 
         </div>
 
-    `;
+      `)
+      .join("");
+
+
+  /*
+   * MOSTRAR RESULTADO
+   */
+
+  resultado.innerHTML = `
+
+    <div class="recommendation">
+
+      <small>
+        TU RECOMENDACIÓN
+      </small>
+
+      <h3>
+        ${producto.nombre}
+      </h3>
+
+      <p>
+        ${producto.capacidad} Wh ·
+        ${producto.potencia} W
+      </p>
+
+
+      <div class="why">
+
+        <strong>
+          ¿Por qué esta opción?
+        </strong>
+
+        <p>
+          ${crearExplicacion(
+            producto,
+            respuestas,
+            ganador.razones
+          )}
+        </p>
+
+      </div>
+
+
+      <p>
+        ${producto.descripcion}
+      </p>
+
+
+      <p>
+        <strong>
+          Lo que más influyó:
+        </strong>
+        ${ganador.razones
+          .slice(0,3)
+          .join(" · ")}
+      </p>
+
+
+      <a
+        class="button"
+        href="${producto.enlace}"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Ver producto →
+      </a>
+
+
+      <div class="alternatives">
+
+        <strong>
+          También consideramos:
+        </strong>
+
+        ${otrasOpciones}
+
+      </div>
+
+    </div>
+
+  `;
+
+  resultado.style.display = "block";
+
+
+  /*
+   * Llevamos al usuario al resultado.
+   */
+
+  resultado.scrollIntoView({
+    behavior:"smooth",
+    block:"nearest"
+  });
 
 }
 
