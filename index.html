@@ -322,56 +322,158 @@ document.addEventListener("click", function(e) {
 
 function recomendar() {
 
-  const uso = document.getElementById("uso").value;
-  const potencia = document.getElementById("potencia").value;
-  const autonomia = document.getElementById("autonomia").value;
-  const presupuesto = document.getElementById("presupuesto").value;
+    const uso = document.getElementById("uso").value;
+    const potencia = document.getElementById("potencia").value;
+    const autonomia = document.getElementById("autonomia").value;
+    const presupuesto = document.getElementById("presupuesto").value;
 
-  const resultado = document.getElementById("resultado");
+    const resultado = document.getElementById("resultado");
 
-  if (!uso || !potencia || !autonomia || !presupuesto) {
-    resultado.innerHTML =
-      "<strong>Completa las cuatro preguntas para darte una recomendación.</strong>";
-    return;
-  }
+    if (!uso || !potencia || !autonomia || !presupuesto) {
+        resultado.innerHTML = `
+            <div class="recommendation">
+                <strong>Completa las cuatro preguntas para darte una recomendación.</strong>
+            </div>
+        `;
+        return;
+    }
 
-  let recomendacion = "";
-  let explicacion = "";
+    /*
+     * PRODUCTOS
+     * Por ahora utilizamos tres modelos reales.
+     * Después agregaremos muchos más y sus enlaces de afiliado.
+     */
 
-  if (potencia === "muyalta" || potencia === "alta") {
-    recomendacion = "Una Power Station de alta potencia";
-    explicacion =
-      "Necesitas un equipo capaz de manejar consumos elevados y mantener una buena autonomía.";
-  }
+    const productos = [
+        {
+            nombre: "BLUETTI EB3A",
+            capacidad: 268,
+            potencia: 600,
+            nivel: "bajo",
+            descripcion: "Compacta, económica y muy buena para dispositivos pequeños.",
+            enlace: "https://www.amazon.com/s?k=Bluetti+EB3A"
+        },
+        {
+            nombre: "EcoFlow RIVER 2",
+            capacidad: 256,
+            potencia: 300,
+            nivel: "medio",
+            descripcion: "Excelente opción para uso básico y equipos pequeños.",
+            enlace: "https://www.amazon.com/s?k=EcoFlow+RIVER+2"
+        },
+        {
+            nombre: "ALLPOWERS R600",
+            capacidad: 299,
+            potencia: 600,
+            nivel: "medio",
+            descripcion: "Mayor potencia y versatilidad para diferentes usos.",
+            enlace: "https://www.amazon.com/s?k=ALLPOWERS+R600"
+        }
+    ];
 
-  else if (autonomia === "muylarga" || autonomia === "larga") {
-    recomendacion = "Una Power Station de gran capacidad";
-    explicacion =
-      "Tu prioridad parece ser la autonomía, por lo que debemos buscar mayor capacidad en Wh.";
-  }
 
-  else if (presupuesto === "bajo") {
-    recomendacion = "Una Power Station compacta y económica";
-    explicacion =
-      "Por tu presupuesto conviene priorizar capacidad útil y potencia suficiente, evitando pagar por funciones que no necesitas.";
-  }
+    /*
+     * REGLAS DE RECOMENDACIÓN
+     */
 
-  else {
-    recomendacion = "Una Power Station equilibrada";
-    explicacion =
-      "Buscaremos el mejor equilibrio entre potencia, capacidad, autonomía y precio.";
-  }
+    let productoPrincipal = productos[0];
 
-  resultado.innerHTML = `
-    <div class="recommendation">
-      <small>TU RECOMENDACIÓN INICIAL</small>
-      <h3>${recomendacion}</h3>
-      <p>${explicacion}</p>
-      <a class="button" href="#soluciones">
-        Ver opciones recomendadas →
-      </a>
-    </div>
-  `;
+    // Presupuesto bajo
+    if (presupuesto === "bajo") {
+
+        productoPrincipal = productos[0];
+
+    }
+
+    // Necesidad de mayor potencia
+    else if (
+        potencia === "muyalta" ||
+        potencia === "alta"
+    ) {
+
+        productoPrincipal = productos[2];
+
+    }
+
+    // Mayor autonomía
+    else if (
+        autonomia === "muylarga" ||
+        autonomia === "larga"
+    ) {
+
+        productoPrincipal = productos[2];
+
+    }
+
+    // Uso básico
+    else {
+
+        productoPrincipal = productos[1];
+
+    }
+
+
+    /*
+     * EXPLICACIÓN PERSONALIZADA
+     */
+
+    let explicacion = "";
+
+    if (productoPrincipal.nombre === "BLUETTI EB3A") {
+
+        explicacion =
+            "Por tu presupuesto, conviene priorizar una solución compacta y económica que entregue suficiente potencia para tus necesidades.";
+
+    } else if (productoPrincipal.nombre === "EcoFlow RIVER 2") {
+
+        explicacion =
+            "Por tus necesidades, la RIVER 2 ofrece un buen equilibrio entre capacidad, potencia, tamaño y facilidad de uso.";
+
+    } else {
+
+        explicacion =
+            "Tus necesidades apuntan hacia una solución con mayor potencia y versatilidad, por lo que esta opción resulta más adecuada.";
+
+    }
+
+
+    /*
+     * MOSTRAR RECOMENDACIÓN
+     */
+
+    resultado.innerHTML = `
+
+        <div class="recommendation">
+
+            <small>TU RECOMENDACIÓN INICIAL</small>
+
+            <h3>${productoPrincipal.nombre}</h3>
+
+            <p>
+                ${productoPrincipal.capacidad} Wh ·
+                ${productoPrincipal.potencia} W
+            </p>
+
+            <p>
+                ${explicacion}
+            </p>
+
+            <p>
+                ${productoPrincipal.descripcion}
+            </p>
+
+            <a
+                class="button"
+                href="${productoPrincipal.enlace}"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Ver producto →
+            </a>
+
+        </div>
+
+    `;
 
 }
 
