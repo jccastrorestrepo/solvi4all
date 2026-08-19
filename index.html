@@ -1,552 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Solvi4All te ayuda a elegir la estación de energía portátil adecuada según tu uso, potencia, autonomía y presupuesto.">
-<title>Solvi4All | Encuentra tu estación de energía</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="SOLVI4ALL: encuentra la solución correcta. Guías, comparativas y recomendaciones transparentes.">
+<title>SOLVI4ALL — Soluciones para todos</title>
 
 <style>
-:root{
-  --bg:#f4f7fb;
-  --card:#ffffff;
-  --text:#172033;
-  --muted:#667085;
-  --primary:#1769ff;
-  --primary-dark:#0d4fc7;
-  --accent:#19a974;
-  --border:#e3e8f0;
-  --dark:#172033;
-  --shadow:0 18px 45px rgba(23,32,51,.09);
-  --radius:22px;
-}
-
 *{box-sizing:border-box}
-
 html{scroll-behavior:smooth}
-
-body{
-  margin:0;
-  min-width:320px;
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.55;
-}
-
-a{text-decoration:none;color:inherit}
-button,select{font:inherit}
-
-.container{
-  width:calc(100% - 40px);
-  max-width:1120px;
-  margin:0 auto;
-}
-
-/* HEADER */
-header{
-  background:#fff;
-  border-bottom:1px solid var(--border);
-  position:sticky;
-  top:0;
-  z-index:50;
-}
-
-.nav{
-  min-height:72px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:24px;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-size:1.35rem;
-  font-weight:900;
-  letter-spacing:-.04em;
-  white-space:nowrap;
-}
-
-.brand-mark{
-  width:38px;
-  height:38px;
-  display:grid;
-  place-items:center;
-  border-radius:11px;
-  background:var(--dark);
-  color:#fff;
-  font-weight:900;
-}
-
-.nav-note{
-  color:var(--muted);
-  font-size:.92rem;
-}
-
-/* HERO */
-.hero{
-  padding:70px 0 55px;
-  background:
-    radial-gradient(circle at 8% 10%,rgba(23,105,255,.13),transparent 30%),
-    radial-gradient(circle at 92% 15%,rgba(25,169,116,.10),transparent 28%),
-    var(--bg);
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:minmax(0,1.12fr) minmax(320px,.88fr);
-  align-items:center;
-  gap:55px;
-}
-
-.eyebrow{
-  display:inline-flex;
-  padding:7px 12px;
-  border-radius:999px;
-  background:#eaf1ff;
-  color:var(--primary-dark);
-  font-weight:800;
-  font-size:.82rem;
-  margin-bottom:15px;
-}
-
-h1{
-  font-size:clamp(2.35rem,5vw,4.35rem);
-  line-height:1.02;
-  letter-spacing:-.055em;
-  margin:0 0 22px;
-}
-
-.hero-copy{
-  color:var(--muted);
-  font-size:1.08rem;
-  max-width:680px;
-  margin:0;
-}
-
-.hero-panel{
-  background:var(--dark);
-  color:#fff;
-  border-radius:28px;
-  padding:32px;
-  box-shadow:var(--shadow);
-}
-
-.hero-panel h2{
-  margin:0 0 12px;
-  font-size:1.4rem;
-}
-
-.hero-panel p{
-  color:#cbd5e1;
-  margin:0;
-}
-
-.mini-list{
-  display:grid;
-  gap:13px;
-  margin-top:23px;
-}
-
-.mini-item{
-  display:flex;
-  gap:11px;
-  color:#e7edf7;
-  font-size:.95rem;
-}
-
-.mini-item b{color:#7ee2b7}
-
-/* FORM */
-.recommender{
-  padding:35px 0 80px;
-}
-
-.box{
-  width:100%;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-}
-
-.form-box{
-  padding:38px;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:30px;
-}
-
-.section-title h2{
-  margin:0 0 8px;
-  font-size:2rem;
-  letter-spacing:-.04em;
-}
-
-.section-title p{
-  margin:0;
-  color:var(--muted);
-}
-
-.questions{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:24px;
-}
-
-.field label{
-  display:block;
-  font-weight:800;
-  margin-bottom:8px;
-}
-
-.field small{
-  display:block;
-  color:var(--muted);
-  margin-top:7px;
-  font-size:.82rem;
-}
-
-select{
-  width:100%;
-  min-height:50px;
-  border:1px solid #d5dce8;
-  background:#fff;
-  border-radius:13px;
-  padding:13px 15px;
-  color:var(--text);
-  outline:none;
-  cursor:pointer;
-}
-
-select:focus{
-  border-color:var(--primary);
-  box-shadow:0 0 0 4px rgba(23,105,255,.10);
-}
-
-.button-wrap{
-  text-align:center;
-  margin-top:30px;
-}
-
-.primary-btn{
-  border:0;
-  border-radius:14px;
-  padding:15px 30px;
-  background:var(--primary);
-  color:#fff;
-  font-weight:900;
-  cursor:pointer;
-  box-shadow:0 10px 25px rgba(23,105,255,.20);
-  transition:.2s ease;
-}
-
-.primary-btn:hover{
-  background:var(--primary-dark);
-  transform:translateY(-1px);
-}
-
-.error{
-  display:none;
-  color:#b42318;
-  background:#fff0ef;
-  border:1px solid #ffd0cc;
-  padding:12px 15px;
-  border-radius:12px;
-  margin-top:20px;
-  text-align:center;
-  font-weight:700;
-}
-
-/* RECOMMENDATION */
-.recommendation{
-  display:none;
-  margin-top:30px;
-  overflow:hidden;
-}
-
-.recommendation.show{display:block}
-
-.recommendation-top{
-  padding:34px;
-  background:linear-gradient(135deg,#172033,#263653);
-  color:#fff;
-}
-
-.tag{
-  display:inline-block;
-  background:#dff8ec;
-  color:#087443;
-  padding:6px 10px;
-  border-radius:999px;
-  font-size:.78rem;
-  font-weight:900;
-  margin-bottom:13px;
-}
-
-.recommendation-top h3{
-  font-size:2.15rem;
-  line-height:1.1;
-  margin:0 0 9px;
-}
-
-.recommendation-top p{
-  margin:0;
-  color:#dbe4f2;
-  max-width:760px;
-}
-
-.recommendation-body{
-  padding:30px 34px 34px;
-}
-
-.spec-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:13px;
-  margin-bottom:23px;
-}
-
-.spec{
-  padding:17px;
-  background:#f7f9fc;
-  border:1px solid var(--border);
-  border-radius:15px;
-}
-
-.spec span{
-  display:block;
-  color:var(--muted);
-  font-size:.78rem;
-  margin-bottom:4px;
-}
-
-.spec strong{font-size:1.18rem}
-
-.reason{
-  padding:19px;
-  background:#f4fbf8;
-  border-left:4px solid var(--accent);
-  border-radius:12px;
-  margin-bottom:23px;
-}
-
-.reason strong{
-  display:block;
-  margin-bottom:6px;
-}
-
-.product-description{
-  color:var(--muted);
-}
-
-.product-actions{
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-top:24px;
-}
-
-.product-link,
-.secondary-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:48px;
-  border-radius:12px;
-  padding:12px 19px;
-  font-weight:900;
-  cursor:pointer;
-}
-
-.product-link{
-  background:var(--primary);
-  color:#fff;
-}
-
-.secondary-btn{
-  border:1px solid var(--border);
-  background:#fff;
-  color:var(--text);
-}
-
-.alternatives{
-  display:none;
-  margin-top:25px;
-  padding-top:22px;
-  border-top:1px solid var(--border);
-}
-
-.alternative-list{
-  display:grid;
-  gap:10px;
-  margin-top:12px;
-}
-
-.alternative{
-  padding:14px;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:#fafbfc;
-}
-
-/* CATALOG */
-.catalog{
-  padding:0 0 85px;
-}
-
-.catalog-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:20px;
-}
-
-.product-card{
-  padding:25px;
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:20px;
-  box-shadow:0 8px 25px rgba(23,32,51,.05);
-}
-
-.product-card h3{
-  margin:0 0 8px;
-  font-size:1.25rem;
-}
-
-.product-card .subtitle{
-  color:var(--muted);
-  font-size:.91rem;
-  min-height:70px;
-}
-
-.product-specs{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9px;
-  margin:18px 0;
-}
-
-.product-specs div{
-  background:#f7f9fc;
-  padding:11px;
-  border-radius:10px;
-  font-size:.84rem;
-}
-
-.product-specs span{
-  display:block;
-  color:var(--muted);
-  font-size:.72rem;
-  margin-bottom:2px;
-}
-
-.catalog-link{
-  display:block;
-  text-align:center;
-  border:1px solid var(--border);
-  border-radius:11px;
-  padding:11px;
-  font-weight:800;
-  transition:.2s;
-}
-
-.catalog-link:hover{
-  border-color:var(--primary);
-  color:var(--primary);
-}
-
-/* FOOTER */
-footer{
-  background:var(--dark);
-  color:#cbd5e1;
-  padding:34px 0;
-  font-size:.88rem;
-}
-
-.footer-inner{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  flex-wrap:wrap;
-}
+body{margin:0;font-family:Inter,Arial,sans-serif;color:#101828;background:#f7f8fa;line-height:1.55}
+header{height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 7vw;border-bottom:1px solid #e5e7eb;background:#fff;position:sticky;top:0;z-index:20}
+.logo{font-weight:900;color:#101828;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo b{display:inline-grid;place-items:center;background:#0b1220;color:#fff;border-radius:9px;width:34px;height:34px;font-size:12px}
+nav{display:flex;align-items:center;gap:24px}
+nav a{color:#667085;text-decoration:none;font-size:14px}
+nav a:hover{color:#2459d6}
+.cta,.button{background:#0b1220;color:#fff;padding:12px 18px;border-radius:10px;text-decoration:none;font-weight:800;font-size:14px;display:inline-block}
+.hero{min-height:calc(100vh - 74px);padding:90px 8vw;display:grid;grid-template-columns:1.25fr .75fr;gap:70px;align-items:center;background:linear-gradient(135deg,#f7f8fa,#eaf0ff)}
+small{font-size:11px;letter-spacing:.16em;font-weight:900;color:#687385}
+.hero h1{font-size:clamp(44px,6vw,76px);line-height:1.02;letter-spacing:-.055em;margin:20px 0}
+.hero h1 span{color:#2459d6}
+.hero p{font-size:20px;color:#5f6b7c;max-width:700px}
+.actions{display:flex;gap:12px;margin:30px 0 18px;flex-wrap:wrap}
+.ghost{padding:12px 18px;border:1px solid #cfd5df;border-radius:10px;color:#101828;text-decoration:none;font-weight:800;font-size:14px;background:#fff}
+.hero em{font-size:13px;color:#7b8594;font-style:normal}
+.hero aside{background:#0b1220;color:#fff;padding:38px;border-radius:26px;box-shadow:0 25px 60px #0b122033}
+.hero aside small{color:#9eabc0}
+.hero aside strong{display:block;font-size:44px;line-height:1.05;letter-spacing:-.04em;margin:20px 0}
+.hero aside p{font-size:15px;color:#aeb9c9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.grid i{font-style:normal;background:#ffffff0d;padding:15px;border-radius:12px}
+.grid label{display:block;color:#d8deea;font-size:12px;margin-top:5px}
+section{padding:100px 8vw}
+section>h2{font-size:clamp(34px,4vw,52px);line-height:1.06;letter-spacing:-.045em;max-width:800px;margin:16px 0 42px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cards article{background:#fff;border:1px solid #e4e7ec;border-radius:20px;padding:28px;min-height:285px}
+.cards b{font-size:28px}
+.cards h3{font-size:22px;margin:20px 0 8px}
+.cards p,.guides p{color:#697386;font-size:15px}
+.cards a{color:#2459d6;text-decoration:none;font-weight:800;font-size:14px}
+.dark{background:#0b1220;color:#fff}
+.dark small{color:#9eabc0}
+.guides{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.guides article{border:1px solid #ffffff18;background:#ffffff08;border-radius:20px;padding:30px;min-height:230px}
+.guides span{color:#7f8da2;font-weight:900}
+.guides h3{font-size:23px;line-height:1.1;margin-top:35px}
+.guides p{color:#aeb9c9}
+.diagnostic{margin:0 8vw 90px;padding:55px;background:#eaf0ff;border:1px solid #cfdbfa;border-radius:26px;display:grid;grid-template-columns:1fr 1fr;gap:45px}
+.diagnostic p{color:#5f6b7c}
+.box{background:#fff;border-radius:18px;padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.box label{font-size:13px;font-weight:800;align-self:center}
+.box select{width:100%;border:1px solid #d7dce4;border-radius:10px;padding:12px;background:#fff;color:#344054}
+.box button{grid-column:1/-1;border:0;border-radius:10px;padding:14px;background:#2459d6;color:#fff;font-weight:900;cursor:pointer;margin-top:8px}
+.box button:hover{background:#1749bb}
+.trust{border-top:1px solid #e4e7ec;background:#fff}
+.trust h2{font-size:28px;margin:0 0 12px}
+.trust p{max-width:900px;color:#697386}
+footer{background:#0b1220;color:#aeb9c9;padding:35px 8vw;display:flex;gap:30px;align-items:center;flex-wrap:wrap}
+footer b{color:#fff}
+footer small{width:100%;color:#68768a;border-top:1px solid #ffffff12;padding-top:20px}
+
+/* RECOMENDADOR NUEVO */
+#resultado{grid-column:1/-1;margin-top:18px}
+.recommendation-wrap{background:#fff;border:1px solid #dfe5ee;border-radius:24px;padding:28px;box-shadow:0 16px 40px rgba(16,24,40,.08)}
+.rec-kicker{font-size:11px;letter-spacing:.15em;font-weight:900;color:#2459d6}
+.rec-header{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin:10px 0 20px}
+.rec-header h3{font-size:34px;line-height:1.05;margin:0 0 8px;letter-spacing:-.04em}
+.rec-header p{margin:0;color:#667085}
+.score{min-width:135px;text-align:center;border:1px solid #cfe0ff;background:#f4f8ff;border-radius:16px;padding:12px}
+.score strong{display:block;font-size:28px;color:#2459d6;line-height:1}
+.score span{font-size:11px;color:#667085;font-weight:800}
+.rec-specs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+.rec-spec{background:#f7f8fa;border-radius:12px;padding:13px}
+.rec-spec span{display:block;font-size:11px;color:#7b8594}
+.rec-spec strong{display:block;font-size:17px;margin-top:2px}
+.explanation{background:#f8fbff;border-left:4px solid #2459d6;border-radius:10px;padding:16px 18px;color:#475467;margin:20px 0}
+.explanation strong{color:#101828}
+.match-list{display:grid;gap:8px;margin-top:16px}
+.match-line{display:flex;justify-content:space-between;gap:15px;font-size:13px}
+.bar{height:7px;background:#e7edf5;border-radius:99px;overflow:hidden;margin-top:5px}
+.bar i{display:block;height:100%;background:#2459d6;border-radius:99px}
+.rec-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.alt-title{font-size:12px;letter-spacing:.12em;font-weight:900;color:#667085;margin:30px 0 12px}
+.alternatives{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.alt-card{border:1px solid #e3e7ed;border-radius:16px;padding:17px;background:#fff}
+.alt-card h4{margin:0 0 5px;font-size:17px}
+.alt-card p{margin:0;color:#667085;font-size:13px}
+.alt-top{display:flex;justify-content:space-between;gap:10px}
+.alt-score{font-weight:900;color:#2459d6}
+.warn{margin-top:15px;background:#fff8e8;border:1px solid #f5d98b;color:#765900;border-radius:10px;padding:12px;font-size:12px}
 
 /* RESPONSIVE */
-@media(max-width:850px){
-  .hero-grid{
-    grid-template-columns:1fr;
-    gap:30px;
-  }
-
-  .questions{
-    grid-template-columns:1fr;
-  }
-
-  .catalog-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero{
-    padding-top:48px;
-  }
+@media(max-width:900px){
+nav{display:none}
+.hero,.diagnostic{grid-template-columns:1fr}
+.cards{grid-template-columns:1fr 1fr}
+.guides{grid-template-columns:1fr}
 }
-
-@media(max-width:560px){
-  .container{
-    width:calc(100% - 28px);
-  }
-
-  .nav{
-    min-height:64px;
-  }
-
-  .nav-note{
-    display:none;
-  }
-
-  .hero{
-    padding:38px 0 35px;
-  }
-
-  h1{
-    font-size:2.55rem;
-  }
-
-  .hero-panel,
-  .form-box{
-    padding:23px;
-  }
-
-  .section-title h2{
-    font-size:1.65rem;
-  }
-
-  .recommendation-top,
-  .recommendation-body{
-    padding:23px;
-  }
-
-  .recommendation-top h3{
-    font-size:1.8rem;
-  }
-
-  .spec-grid{
-    grid-template-columns:1fr;
-  }
-
-  .product-actions{
-    flex-direction:column;
-  }
-
-  .product-link,
-  .secondary-btn{
-    width:100%;
-  }
+@media(max-width:600px){
+.hero,section{padding:65px 20px}
+.cards,.guides{grid-template-columns:1fr}
+.hero h1{font-size:48px}
+.diagnostic{margin:0 20px 60px;padding:28px}
+.box{grid-template-columns:1fr}
+.box button{grid-column:1}
+.rec-header{display:block}
+.score{margin-top:15px}
+.rec-specs{grid-template-columns:1fr 1fr}
+.alternatives{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -554,455 +116,754 @@ footer{
 <body>
 
 <header>
-  <div class="container nav">
-    <a class="brand" href="#">
-      <span class="brand-mark">S4</span>
-      <span>Solvi4All</span>
-    </a>
-    <span class="nav-note">Encuentra la solución adecuada para ti</span>
-  </div>
+  <a class="logo" href="#inicio"><b>S4</b>SOLVI4ALL</a>
+
+  <nav>
+    <a href="#soluciones">Soluciones</a>
+    <a href="#guias">Guías</a>
+    <a href="#nosotros">Cómo funciona</a>
+  </nav>
+
+  <a class="cta" href="#diagnostico">Encuentra tu solución</a>
 </header>
 
 <main>
 
-<section class="hero">
-  <div class="container hero-grid">
+<section class="hero" id="inicio">
 
-    <div>
-      <span class="eyebrow">RECOMENDADOR INTELIGENTE</span>
+  <div>
+    <small>SOLUCIONES · TECNOLOGÍA · AUTONOMÍA</small>
 
-      <h1>¿Qué estación de energía necesitas?</h1>
+    <h1>
+      No compres a ciegas.<br>
+      <span>Encuentra la solución correcta.</span>
+    </h1>
 
-      <p class="hero-copy">
-        Responde cuatro preguntas y Solvi4All analizará tu necesidad,
-        la potencia, la autonomía y el presupuesto para darte una
-        recomendación equilibrada.
-      </p>
+    <p>
+      En SOLVI4ALL investigamos, explicamos y comparamos productos
+      para ayudarte a tomar mejores decisiones de compra para tu hogar o negocio.
+    </p>
+
+    <div class="actions">
+      <a class="button" href="#diagnostico">Quiero una recomendación</a>
+      <a class="ghost" href="#soluciones">Ver soluciones</a>
     </div>
 
-    <aside class="hero-panel">
-      <h2>No se trata solo de escoger la más potente.</h2>
+    <em>Guías prácticas · Comparativas · Recomendaciones transparentes</em>
+  </div>
 
+  <aside>
+    <small>SOLVI4ALL</small>
+    <strong>Soluciones<br>para todos.</strong>
+    <p>Menos productos al azar. Mejores decisiones.</p>
+
+    <div class="grid">
+      <i>⚡<label>Energía</label></i>
+      <i>🏠<label>Hogar</label></i>
+      <i>📡<label>Conectividad</label></i>
+      <i>🛡️<label>Seguridad</label></i>
+    </div>
+  </aside>
+
+</section>
+
+<section id="soluciones">
+
+  <small>QUÉ HACEMOS</small>
+
+  <h2>
+    Primero entendemos el problema.
+    Después buscamos la solución.
+  </h2>
+
+  <div class="cards">
+
+    <article>
+      <b>⚡</b>
+      <h3>Energía</h3>
       <p>
-        Una buena recomendación debe considerar qué vas a conectar,
-        cuánto tiempo necesitas energía y cuánto quieres invertir.
+        Power stations, baterías y soluciones solares
+        para mantener funcionando lo que necesitas.
       </p>
+      <a href="#diagnostico">Encontrar solución →</a>
+    </article>
 
-      <div class="mini-list">
-        <div class="mini-item"><b>✓</b><span>Evalúa la potencia necesaria.</span></div>
-        <div class="mini-item"><b>✓</b><span>Considera autonomía y capacidad.</span></div>
-        <div class="mini-item"><b>✓</b><span>Respeta tu presupuesto.</span></div>
-        <div class="mini-item"><b>✓</b><span>Explica por qué recomienda esa opción.</span></div>
-      </div>
-    </aside>
+    <article>
+      <b>🏠</b>
+      <h3>Hogar</h3>
+      <p>
+        Sensores, automatización y tecnología práctica
+        para vivir mejor y ahorrar.
+      </p>
+    </article>
+
+    <article>
+      <b>📡</b>
+      <h3>Conectividad</h3>
+      <p>
+        Equipos y alternativas para mantenerte conectado
+        cuando más lo necesitas.
+      </p>
+    </article>
+
+    <article>
+      <b>🛡️</b>
+      <h3>Seguridad</h3>
+      <p>
+        Cámaras, sensores y soluciones inteligentes
+        para hogares y pequeños negocios.
+      </p>
+    </article>
 
   </div>
+
 </section>
 
-<section class="recommender">
-  <div class="container">
+<section id="guias" class="dark">
 
-    <div class="box form-box">
+  <small>CONTENIDO QUE AYUDA A DECIDIR</small>
 
-      <div class="section-title">
-        <h2>Cuéntanos qué necesitas</h2>
-        <p>No hay respuestas correctas o incorrectas.</p>
-      </div>
+  <h2>Antes de comprar, entiende qué necesitas.</h2>
 
-      <div class="questions">
+  <div class="guides">
 
-        <div class="field">
-          <label for="uso">1. ¿Para qué la vas a utilizar?</label>
-          <select id="uso">
-            <option value="">Selecciona una opción</option>
-            <option value="hogar">Emergencias en el hogar</option>
-            <option value="trabajo">Trabajo / oficina</option>
-            <option value="camping">Camping / viajes</option>
-            <option value="electronica">Electrónica y dispositivos</option>
-          </select>
-          <small>Piensa principalmente en el uso más frecuente.</small>
-        </div>
+    <article>
+      <span>01</span>
+      <h3>¿Qué power station necesito?</h3>
+      <p>
+        Capacidad, potencia y autonomía explicadas
+        de forma sencilla.
+      </p>
+    </article>
 
-        <div class="field">
-          <label for="potencia">2. ¿Qué nivel de potencia necesitas?</label>
-          <select id="potencia">
-            <option value="">Selecciona una opción</option>
-            <option value="baja">Baja — dispositivos pequeños</option>
-            <option value="media">Media — varios dispositivos</option>
-            <option value="alta">Alta — equipos de mayor consumo</option>
-            <option value="muyalta">Muy alta — necesito bastante margen</option>
-          </select>
-          <small>Si no estás seguro, elige “media”.</small>
-        </div>
+    <article>
+      <span>02</span>
+      <h3>¿Bluetti, EcoFlow o ALLPOWERS?</h3>
+      <p>
+        Qué diferencias importan realmente
+        antes de comprar.
+      </p>
+    </article>
 
-        <div class="field">
-          <label for="autonomia">3. ¿Cuánta autonomía quieres?</label>
-          <select id="autonomia">
-            <option value="">Selecciona una opción</option>
-            <option value="corta">Corta — unas horas</option>
-            <option value="media">Media — buena parte del día</option>
-            <option value="larga">Larga — quiero mayor autonomía</option>
-            <option value="muylarga">Muy larga — necesito máxima capacidad</option>
-          </select>
-          <small>Mayor capacidad normalmente significa mayor tamaño y precio.</small>
-        </div>
+    <article>
+      <span>03</span>
+      <h3>¿Cuánta energía necesitas?</h3>
+      <p>
+        Aprende a calcular potencia, consumo
+        y autonomía.
+      </p>
+    </article>
 
-        <div class="field">
-          <label for="presupuesto">4. ¿Cuál es tu presupuesto?</label>
-          <select id="presupuesto">
-            <option value="">Selecciona una opción</option>
-            <option value="bajo">Bajo — quiero gastar lo mínimo</option>
-            <option value="medio">Medio — busco equilibrio</option>
-            <option value="alto">Alto — priorizo prestaciones</option>
-          </select>
-          <small>Buscamos el mejor equilibrio, no simplemente el producto más caro.</small>
-        </div>
-
-      </div>
-
-      <div class="button-wrap">
-        <button class="primary-btn" type="button" onclick="recomendar()">
-          Ver mi recomendación →
-        </button>
-      </div>
-
-      <div id="error" class="error">
-        Completa las cuatro preguntas para darte una recomendación.
-      </div>
-
-      <div id="resultado" class="box recommendation"></div>
-
-    </div>
   </div>
+
 </section>
 
-<section class="catalog">
-  <div class="container">
+<section id="diagnostico" class="diagnostic">
 
-    <div class="section-title">
-      <h2>Modelos analizados</h2>
-      <p>La recomendación actual parte de estos tres modelos.</p>
-    </div>
+  <div>
+    <small>RECOMENDADOR SOLVI4ALL</small>
 
-    <div id="catalogo" class="catalog-grid"></div>
+    <h2>Cuéntanos qué necesitas.</h2>
+
+    <p>
+      Responde estas preguntas y compararemos las opciones
+      según uso, potencia, autonomía y presupuesto.
+      No vamos a recomendarte simplemente la más cara:
+      buscamos la que mejor encaje contigo.
+    </p>
+  </div>
+
+  <div class="box">
+
+    <label for="uso">¿Qué quieres alimentar?</label>
+
+    <select id="uso">
+      <option value="">Selecciona</option>
+      <option value="hogar">Electrodomésticos del hogar</option>
+      <option value="camping">Camping / viajes</option>
+      <option value="negocio">Negocio</option>
+      <option value="emergencia">Emergencia / apagones</option>
+    </select>
+
+    <label for="potencia">Potencia aproximada</label>
+
+    <select id="potencia">
+      <option value="">Selecciona</option>
+      <option value="baja">Hasta 300 W</option>
+      <option value="media">300 - 1000 W</option>
+      <option value="alta">1000 - 2000 W</option>
+      <option value="muyalta">Más de 2000 W</option>
+    </select>
+
+    <label for="autonomia">Autonomía</label>
+
+    <select id="autonomia">
+      <option value="">Selecciona</option>
+      <option value="corta">1 - 3 horas</option>
+      <option value="media">3 - 8 horas</option>
+      <option value="larga">8 - 24 horas</option>
+      <option value="muylarga">Más de 24 horas</option>
+    </select>
+
+    <label for="presupuesto">Presupuesto</label>
+
+    <select id="presupuesto">
+      <option value="">Selecciona</option>
+      <option value="bajo">Menos de US$500</option>
+      <option value="medio">US$500 - US$1.000</option>
+      <option value="alto">US$1.000 - US$2.000</option>
+      <option value="premium">Más de US$2.000</option>
+    </select>
+
+    <button id="btn-recomendar" type="button">Encontrar mi solución →</button>
+
+    <div id="resultado"></div>
 
   </div>
+
+</section>
+
+<section id="nosotros" class="trust">
+
+  <h2>Una decisión informada vale más que una compra impulsiva.</h2>
+
+  <p>
+    Publicamos contenido práctico y transparente.
+    Algunas recomendaciones pueden incluir enlaces de afiliados.
+    Si compras a través de ellos, SOLVI4ALL puede recibir una comisión
+    sin costo adicional para ti.
+  </p>
+
 </section>
 
 </main>
 
 <footer>
-  <div class="container footer-inner">
-    <span>© <span id="year"></span> Solvi4All</span>
-    <span>Información orientativa. Verifica siempre las especificaciones del fabricante antes de comprar.</span>
-  </div>
+  <b>S4 SOLVI4ALL</b>
+  <span>Soluciones para todos.</span>
+
+  <small>
+    © 2026 SOLVI4ALL · Proyecto editorial en desarrollo.
+  </small>
 </footer>
 
 <script>
-const productos = [
+/*
+=========================================================
+SOLVI4ALL — MOTOR DE RECOMENDACIÓN V2
+=========================================================
+La versión anterior escogía un producto mediante IF/ELSE.
+Esta versión puntúa TODOS los productos usando las cuatro
+respuestas del visitante y genera un ranking.
+=========================================================
+*/
+
+const productosSolvi4All = [
+
   {
-    nombre:"BLUETTI EB3A",
-    capacidad:268,
-    potencia:600,
-    nivel:"bajo",
-    descripcion:"Una estación compacta y económica, especialmente interesante para dispositivos pequeños, electrónica y necesidades de respaldo moderadas.",
-    usos:["hogar","camping","electronica","trabajo"],
-    enlace:"https://www.amazon.com/s?k=BLUETTI+EB3A"
+    id: "bluetti-eb3a",
+    nombre: "BLUETTI EB3A",
+    capacidad: 268,
+    potencia: 600,
+    nivelPrecio: "bajo",
+    usos: {
+      hogar: 4,
+      camping: 5,
+      negocio: 3,
+      emergencia: 4
+    },
+    potenciaFit: {
+      baja: 5,
+      media: 4,
+      alta: 2,
+      muyalta: 0
+    },
+    autonomiaFit: {
+      corta: 5,
+      media: 4,
+      larga: 2,
+      muylarga: 0
+    },
+    presupuestoFit: {
+      bajo: 5,
+      medio: 4,
+      alto: 3,
+      premium: 2
+    },
+    descripcion:
+      "Compacta, económica y muy buena para dispositivos pequeños y necesidades de respaldo moderadas.",
+    enlace:
+      "https://www.amazon.com/s?k=Bluetti+EB3A"
   },
+
   {
-    nombre:"EcoFlow RIVER 2",
-    capacidad:256,
-    potencia:300,
-    nivel:"medio",
-    descripcion:"Una alternativa equilibrada por tamaño, capacidad y facilidad de uso. Buena opción para uso básico, viajes y equipos pequeños.",
-    usos:["hogar","camping","electronica","trabajo"],
-    enlace:"https://www.amazon.com/s?k=EcoFlow+RIVER+2"
+    id: "ecoflow-river-2",
+    nombre: "EcoFlow RIVER 2",
+    capacidad: 256,
+    potencia: 300,
+    nivelPrecio: "medio",
+    usos: {
+      hogar: 3,
+      camping: 5,
+      negocio: 3,
+      emergencia: 3
+    },
+    potenciaFit: {
+      baja: 5,
+      media: 3,
+      alta: 1,
+      muyalta: 0
+    },
+    autonomiaFit: {
+      corta: 5,
+      media: 4,
+      larga: 2,
+      muylarga: 0
+    },
+    presupuestoFit: {
+      bajo: 3,
+      medio: 5,
+      alto: 4,
+      premium: 3
+    },
+    descripcion:
+      "Una alternativa equilibrada por tamaño, capacidad y facilidad de uso, especialmente interesante para uso básico y portátil.",
+    enlace:
+      "https://www.amazon.com/s?k=EcoFlow+RIVER+2"
   },
+
   {
-    nombre:"ALLPOWERS R600",
-    capacidad:299,
-    potencia:600,
-    nivel:"alto",
-    descripcion:"Ofrece mayor potencia de salida y una capacidad ligeramente superior, por lo que resulta atractiva cuando se necesita más margen y versatilidad.",
-    usos:["hogar","camping","electronica","trabajo"],
-    enlace:"https://www.amazon.com/s?k=ALLPOWERS+R600"
+    id: "allpowers-r600",
+    nombre: "ALLPOWERS R600",
+    capacidad: 299,
+    potencia: 600,
+    nivelPrecio: "medio",
+    usos: {
+      hogar: 4,
+      camping: 4,
+      negocio: 5,
+      emergencia: 5
+    },
+    potenciaFit: {
+      baja: 3,
+      media: 5,
+      alta: 2,
+      muyalta: 0
+    },
+    autonomiaFit: {
+      corta: 3,
+      media: 5,
+      larga: 3,
+      muylarga: 0
+    },
+    presupuestoFit: {
+      bajo: 2,
+      medio: 5,
+      alto: 5,
+      premium: 4
+    },
+    descripcion:
+      "Mayor margen de potencia y versatilidad dentro de este grupo, especialmente atractiva para respaldo y usos variados.",
+    enlace:
+      "https://www.amazon.com/s?k=ALLPOWERS+R600"
   }
+
 ];
 
-const perfiles = {
-  potencia:{
-    baja:{watts:150},
-    media:{watts:300},
-    alta:{watts:500},
-    muyalta:{watts:700}
-  },
-  autonomia:{
-    corta:{wh:180},
-    media:{wh:260},
-    larga:{wh:330},
-    muylarga:{wh:450}
-  },
-  presupuesto:{
-    bajo:{peso:1},
-    medio:{peso:2},
-    alto:{peso:3}
-  }
+/*
+---------------------------------------------------------
+PESOS
+---------------------------------------------------------
+Uso       = 20%
+Potencia  = 30%
+Autonomía = 25%
+Presupuesto = 25%
+---------------------------------------------------------
+*/
+
+const pesosSolvi4All = {
+  uso: 20,
+  potencia: 30,
+  autonomia: 25,
+  presupuesto: 25
 };
 
-function nivelProducto(p){
-  if(p.nombre === "BLUETTI EB3A") return 1;
-  if(p.nombre === "EcoFlow RIVER 2") return 2;
-  return 3;
-}
+function calcularCompatibilidad(producto, respuestas) {
 
-function puntuar(p,r){
-  const needW = perfiles.potencia[r.potencia].watts;
-  const needWh = perfiles.autonomia[r.autonomia].wh;
-  const budget = perfiles.presupuesto[r.presupuesto].peso;
+  const uso =
+    producto.usos[respuestas.uso] || 0;
 
-  let score = 0;
-  const razones = [];
+  const potencia =
+    producto.potenciaFit[respuestas.potencia] || 0;
 
-  if(p.potencia >= needW){
-    score += 35;
-    razones.push(
-      p.potencia === needW
-        ? "entrega una potencia adecuada sin sobredimensionar la compra"
-        : "ofrece margen de potencia para trabajar con mayor tranquilidad"
-    );
-  }else{
-    score -= 45;
-    razones.push("su potencia puede quedarse corta para tu necesidad");
-  }
+  const autonomia =
+    producto.autonomiaFit[respuestas.autonomia] || 0;
 
-  if(p.capacidad >= needWh){
-    score += 35;
-    razones.push(
-      p.capacidad <= needWh + 40
-        ? "su capacidad está bastante ajustada a la autonomía que buscas"
-        : "su capacidad ofrece un margen adicional de autonomía"
-    );
-  }else{
-    score -= 35;
-    razones.push("su capacidad puede limitar el tiempo de funcionamiento");
-  }
+  const presupuesto =
+    producto.presupuestoFit[respuestas.presupuesto] || 0;
 
-  const nivel = nivelProducto(p);
+  const maxPuntos = 5;
 
-  if(budget === 1) score += nivel === 1 ? 25 : nivel === 2 ? 8 : -12;
-  if(budget === 2) score += nivel === 2 ? 25 : nivel === 1 ? 18 : 8;
-  if(budget === 3) score += nivel === 3 ? 25 : nivel === 2 ? 18 : 8;
+  const scoreUso =
+    (uso / maxPuntos) * pesosSolvi4All.uso;
 
-  if(r.uso === "camping" && p.capacidad >= 256){
-    score += 6;
-    razones.push("encaja bien con un uso portátil y de viaje");
-  }
+  const scorePotencia =
+    (potencia / maxPuntos) * pesosSolvi4All.potencia;
 
-  if(r.uso === "electronica" && p.potencia >= 300){
-    score += 6;
-    razones.push("es adecuada para alimentar dispositivos electrónicos");
-  }
+  const scoreAutonomia =
+    (autonomia / maxPuntos) * pesosSolvi4All.autonomia;
 
-  if(r.uso === "trabajo" && p.potencia >= 300){
-    score += 6;
-    razones.push("ofrece un buen margen para equipos de trabajo");
-  }
+  const scorePresupuesto =
+    (presupuesto / maxPuntos) * pesosSolvi4All.presupuesto;
 
-  if(r.uso === "hogar" && p.potencia >= 500){
-    score += 8;
-    razones.push("tiene buen margen para situaciones de respaldo en el hogar");
-  }
+  const total =
+    scoreUso +
+    scorePotencia +
+    scoreAutonomia +
+    scorePresupuesto;
 
-  return {score, razones};
-}
-
-function obtenerRespuestas(){
   return {
-    uso:document.getElementById("uso").value,
-    potencia:document.getElementById("potencia").value,
-    autonomia:document.getElementById("autonomia").value,
-    presupuesto:document.getElementById("presupuesto").value
+    total: Math.round(total),
+    componentes: {
+      uso: Math.round(scoreUso),
+      potencia: Math.round(scorePotencia),
+      autonomia: Math.round(scoreAutonomia),
+      presupuesto: Math.round(scorePresupuesto)
+    }
   };
 }
 
-function recomendar(){
+function textoUso(valor) {
 
-  const r = obtenerRespuestas();
-  const resultado = document.getElementById("resultado");
-  const error = document.getElementById("error");
+  const textos = {
+    hogar: "uso en el hogar",
+    camping: "viajes o camping",
+    negocio: "uso en un negocio",
+    emergencia: "respaldo durante emergencias o apagones"
+  };
 
-  if(!r.uso || !r.potencia || !r.autonomia || !r.presupuesto){
-    error.style.display = "block";
-    resultado.classList.remove("show");
-    resultado.innerHTML = "";
+  return textos[valor] || "tu necesidad";
+}
+
+function textoPotencia(valor) {
+
+  const textos = {
+    baja: "una demanda de hasta 300 W",
+    media: "una demanda de 300 a 1000 W",
+    alta: "una demanda de 1000 a 2000 W",
+    muyalta: "una demanda superior a 2000 W"
+  };
+
+  return textos[valor] || "la potencia indicada";
+}
+
+function textoAutonomia(valor) {
+
+  const textos = {
+    corta: "1 a 3 horas",
+    media: "3 a 8 horas",
+    larga: "8 a 24 horas",
+    muylarga: "más de 24 horas"
+  };
+
+  return textos[valor] || "la autonomía indicada";
+}
+
+function textoPresupuesto(valor) {
+
+  const textos = {
+    bajo: "un presupuesto económico",
+    medio: "un presupuesto medio",
+    alto: "un presupuesto alto",
+    premium: "un presupuesto premium"
+  };
+
+  return textos[valor] || "tu presupuesto";
+}
+
+function generarExplicacion(producto, respuestas, ranking) {
+
+  const partes = [];
+
+  const score = ranking.componentes;
+
+  if (score.potencia >= 24) {
+    partes.push(
+      "encaja muy bien con la potencia que indicaste"
+    );
+  } else if (score.potencia >= 18) {
+    partes.push(
+      "ofrece un nivel de potencia razonablemente adecuado"
+    );
+  } else {
+    partes.push(
+      "es la alternativa que mejor se aproxima dentro de los modelos analizados"
+    );
+  }
+
+  if (score.autonomia >= 20) {
+    partes.push(
+      "responde bien a la autonomía que buscas"
+    );
+  }
+
+  if (score.presupuesto >= 20) {
+    partes.push(
+      "mantiene una buena relación con tu presupuesto"
+    );
+  }
+
+  if (score.uso >= 16) {
+    partes.push(
+      "y coincide especialmente bien con el uso que seleccionaste"
+    );
+  }
+
+  return (
+    "La recomendamos porque " +
+    partes.join(", ") +
+    "."
+  );
+}
+
+function crearBarra(nombre, valor) {
+
+  const porcentaje =
+    Math.max(0, Math.min(100, Math.round((valor / 30) * 100)));
+
+  return `
+    <div>
+      <div class="match-line">
+        <span>${nombre}</span>
+        <strong>${valor}/30</strong>
+      </div>
+      <div class="bar">
+        <i style="width:${porcentaje}%"></i>
+      </div>
+    </div>
+  `;
+}
+
+function recomendar() {
+
+  const respuestas = {
+    uso: document.getElementById("uso").value,
+    potencia: document.getElementById("potencia").value,
+    autonomia: document.getElementById("autonomia").value,
+    presupuesto: document.getElementById("presupuesto").value
+  };
+
+  const resultado =
+    document.getElementById("resultado");
+
+  if (
+    !respuestas.uso ||
+    !respuestas.potencia ||
+    !respuestas.autonomia ||
+    !respuestas.presupuesto
+  ) {
+
+    resultado.innerHTML = `
+      <div class="recommendation-wrap">
+        <strong>Completa las cuatro preguntas.</strong>
+        <p style="margin:6px 0 0;color:#667085">
+          Necesitamos tus respuestas para comparar correctamente las opciones.
+        </p>
+      </div>
+    `;
+
     return;
   }
 
-  error.style.display = "none";
+  const ranking = productosSolvi4All
+    .map(producto => {
 
-  const evaluados = productos
-    .map(p => {
-      const e = puntuar(p,r);
+      const compatibilidad =
+        calcularCompatibilidad(producto, respuestas);
+
       return {
-        producto:p,
-        score:e.score,
-        razones:e.razones
+        producto,
+        ...compatibilidad
       };
+
     })
-    .sort((a,b) => b.score - a.score);
+    .sort((a, b) => b.total - a.total);
 
-  const ganador = evaluados[0];
-  const p = ganador.producto;
+  const ganador = ranking[0];
+  const alternativas = ranking.slice(1);
 
-  let explicacion = "";
+  const explicacion =
+    generarExplicacion(
+      ganador.producto,
+      respuestas,
+      ganador
+    );
 
-  if(r.presupuesto === "bajo"){
-    explicacion = "Por tu presupuesto, priorizamos una solución que entregue lo necesario sin pagar de más. ";
-  }else if(r.presupuesto === "medio"){
-    explicacion = "Por tu presupuesto, buscamos el mejor equilibrio entre capacidad, potencia y costo. ";
-  }else{
-    explicacion = "Como tienes mayor margen de presupuesto, podemos darle más peso a la potencia y la autonomía. ";
-  }
+  const htmlAlternativas =
+    alternativas.map((item, index) => {
 
-  if(r.potencia === "muyalta" || r.potencia === "alta"){
-    explicacion += "Tu prioridad de potencia hace importante contar con suficiente margen de salida. ";
-  }else{
-    explicacion += "Tu necesidad de potencia permite considerar opciones compactas sin sobredimensionar la compra. ";
-  }
+      return `
+        <article class="alt-card">
 
-  if(r.autonomia === "larga" || r.autonomia === "muylarga"){
-    explicacion += "Además, buscas una autonomía importante, por lo que la capacidad en Wh tiene bastante peso en la decisión.";
-  }else{
-    explicacion += "Para la autonomía que indicas, no es imprescindible ir a una estación de gran capacidad.";
-  }
+          <div class="alt-top">
+            <h4>${index === 0 ? "🥈 " : "🥉 "}${item.producto.nombre}</h4>
+            <span class="alt-score">${item.total}%</span>
+          </div>
+
+          <p>
+            ${item.producto.capacidad} Wh ·
+            ${item.producto.potencia} W
+          </p>
+
+        </article>
+      `;
+
+    }).join("");
 
   resultado.innerHTML = `
-    <div class="recommendation-top">
-      <span class="tag">TU RECOMENDACIÓN</span>
-      <h3>${p.nombre}</h3>
-      <p>Es la opción que obtuvo la mejor puntuación para el conjunto de tus respuestas.</p>
-    </div>
 
-    <div class="recommendation-body">
+    <div class="recommendation-wrap">
 
-      <div class="spec-grid">
-        <div class="spec">
+      <div class="rec-kicker">
+        TU MEJOR OPCIÓN
+      </div>
+
+      <div class="rec-header">
+
+        <div>
+          <h3>${ganador.producto.nombre}</h3>
+
+          <p>
+            La opción con mayor compatibilidad según tus cuatro respuestas.
+          </p>
+        </div>
+
+        <div class="score">
+          <strong>${ganador.total}%</strong>
+          <span>COMPATIBILIDAD</span>
+        </div>
+
+      </div>
+
+      <div class="rec-specs">
+
+        <div class="rec-spec">
           <span>Capacidad</span>
-          <strong>${p.capacidad} Wh</strong>
+          <strong>${ganador.producto.capacidad} Wh</strong>
         </div>
-        <div class="spec">
+
+        <div class="rec-spec">
           <span>Potencia</span>
-          <strong>${p.potencia} W</strong>
+          <strong>${ganador.producto.potencia} W</strong>
         </div>
-        <div class="spec">
-          <span>Puntuación</span>
-          <strong>${ganador.score}</strong>
+
+        <div class="rec-spec">
+          <span>Uso</span>
+          <strong>${textoUso(respuestas.uso)}</strong>
         </div>
+
+        <div class="rec-spec">
+          <span>Autonomía</span>
+          <strong>${textoAutonomia(respuestas.autonomia)}</strong>
+        </div>
+
       </div>
 
-      <div class="reason">
+      <div class="explanation">
+
         <strong>¿Por qué esta opción?</strong>
-        ${explicacion}
+
+        <p style="margin:7px 0 0">
+          ${explicacion}
+        </p>
+
+        <p style="margin:10px 0 0">
+          Buscabas ${textoPotencia(respuestas.potencia)}
+          y ${textoPresupuesto(respuestas.presupuesto)}.
+        </p>
+
       </div>
 
-      <p class="product-description">${p.descripcion}</p>
+      <div class="match-list">
 
-      <p>
-        <strong>Lo que más pesó en la decisión:</strong>
-        ${ganador.razones.slice(0,3).join("; ")}.
-      </p>
+        ${crearBarra(
+          "Uso",
+          ganador.componentes.uso
+        )}
 
-      <div class="product-actions">
+        ${crearBarra(
+          "Potencia",
+          ganador.componentes.potencia
+        )}
+
+        ${crearBarra(
+          "Autonomía",
+          ganador.componentes.autonomia
+        )}
+
+        ${crearBarra(
+          "Presupuesto",
+          ganador.componentes.presupuesto
+        )}
+
+      </div>
+
+      <div class="rec-actions">
+
         <a
-          class="product-link"
-          href="${p.enlace}"
+          class="button"
+          href="${ganador.producto.enlace}"
           target="_blank"
-          rel="noopener noreferrer nofollow">
+          rel="noopener noreferrer">
           Ver producto →
         </a>
 
-        <button
-          class="secondary-btn"
-          type="button"
-          onclick="mostrarAlternativas()">
-          Ver otras opciones
-        </button>
+        <a
+          class="ghost"
+          href="#diagnostico">
+          Cambiar mis respuestas
+        </a>
+
       </div>
 
-      <div id="alternativas" class="alternatives">
-        <strong>Otras opciones consideradas</strong>
+      <div class="alt-title">
+        TAMBIÉN CONSIDERAMOS
+      </div>
 
-        <div class="alternative-list">
-          ${evaluados.slice(1).map(x => `
-            <div class="alternative">
-              <strong>${x.producto.nombre}</strong>
-              <span style="color:#667085">
-                — ${x.producto.capacidad} Wh / ${x.producto.potencia} W
-              </span>
-            </div>
-          `).join("")}
+      <div class="alternatives">
+        ${htmlAlternativas}
+      </div>
+
+      ${
+        respuestas.potencia === "muyalta" ||
+        respuestas.potencia === "alta"
+        ?
+        `
+        <div class="warn">
+          ⚠️ Importante: los modelos actualmente cargados
+          están orientados a necesidades de potencia moderada.
+          Para cargas superiores debemos ampliar el catálogo
+          antes de afirmar que una de estas opciones es suficiente.
         </div>
-      </div>
+        `
+        :
+        ""
+      }
 
     </div>
+
   `;
 
-  resultado.classList.add("show");
-
   resultado.scrollIntoView({
-    behavior:"smooth",
-    block:"start"
+    behavior: "smooth",
+    block: "start"
   });
 }
 
-function mostrarAlternativas(){
-  const a = document.getElementById("alternativas");
-  if(a){
-    a.style.display = a.style.display === "block" ? "none" : "block";
-  }
-}
+document
+  .getElementById("btn-recomendar")
+  .addEventListener("click", recomendar);
 
-function cargarCatalogo(){
-
-  document.getElementById("catalogo").innerHTML =
-    productos.map(p => `
-      <article class="product-card">
-
-        <h3>${p.nombre}</h3>
-
-        <div class="subtitle">
-          ${p.descripcion}
-        </div>
-
-        <div class="product-specs">
-
-          <div>
-            <span>Capacidad</span>
-            <strong>${p.capacidad} Wh</strong>
-          </div>
-
-          <div>
-            <span>Potencia</span>
-            <strong>${p.potencia} W</strong>
-          </div>
-
-        </div>
-
-        <a
-          class="catalog-link"
-          href="${p.enlace}"
-          target="_blank"
-          rel="noopener noreferrer nofollow">
-          Ver producto →
-        </a>
-
-      </article>
-    `).join("");
-}
-
-document.getElementById("year").textContent = new Date().getFullYear();
-
-cargarCatalogo();
 </script>
 
 </body>
