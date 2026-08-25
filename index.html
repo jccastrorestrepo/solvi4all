@@ -1595,17 +1595,19 @@
     const PRODUCTS = {
       bluetti: {
         id: "bluetti",
-        name: "BLUETTI EB3A",
-        capacity: 268,
-        capacityText: "268 Wh",
-        power: 600,
-        powerText: "600 W",
+        name: "BLUETTI AC2A",
+        capacity: 204.8,
+        capacityText: "204,8 Wh",
+        power: 300,
+        powerText: "300 W",
         description:
-          "Una estación compacta y económica, especialmente interesante para dispositivos pequeños y necesidades de respaldo moderadas.",
+          "Una estación compacta y portátil, especialmente adecuada para dispositivos pequeños, viajes y necesidades básicas de respaldo.",
         profile:
-          "Compacta y económica",
+          "Compacta y portátil",
         recommendedUse:
-          "Dispositivos pequeños y respaldo moderado",
+          "Dispositivos pequeños y respaldo básico",
+        affiliateUrl:
+          "https://www.awin1.com/cread.php?awinmid=59271&awinaffid=3043829&ued=https%3A%2F%2Fwww.bluettipower.com%2Fproducts%2Fac2a",
         scores: {
           home: 40,
           electronics: 40,
@@ -2267,12 +2269,19 @@
           lastRecommendation &&
           lastRecommendation.recommendation
         ) {
-          openProductModal(
-            lastRecommendation
-              .recommendation
-              .product
-              .id
-          );
+          const product =
+            lastRecommendation.recommendation.product;
+
+          if (product.affiliateUrl) {
+            window.open(
+              product.affiliateUrl,
+              "_blank",
+              "noopener,noreferrer"
+            );
+            return;
+          }
+
+          openProductModal(product.id);
         }
       }
     );
